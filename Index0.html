@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication Example</title>
+      <style>
+      body {
+        background-image: url("images/btc.png") ;
+        align-items: center ;
+        margin-top: 200px;
+      }
+     .header h1 {
+       color: #ffffff;
+       text-align: center;
+       font-family: Georgia, serif;
+     }
+    .header p {
+       color: #ffffff;
+       text-align: center;
+       font-family: Georgia, serif;
+    }
+    .logincontainer {
+         color: #ffffffff ;
+         text-align: center ;
+         font-family: 'Times New Roman', serif;
+         font-style: bold;
+         border: none;
+         padding: 10px;
+         background-color: rgba(25, 25, 255, 0.5);
+         width: 94%;
+         backdrop-filter: blur(3px );
+         border-bottom-left-radius: 23px;
+         border-top-right-radius: 23px
+    }
+   .logincontainer a {
+      color: rgb(239,38,243);
+   }
+    </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Login Page</h1>
+    <p>welcome back, please login </p>
+</div>
+    <div class="logincontainer">
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <button type="button" onclick="login()">Login</button>
+        <p>don't have an account / create</p><a href="index5.html">sine up</
+    </form>
+</div>
+
+    <script>
+        function login() {
+            // Get input values
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Perform authentication (replace with your authentication logic)
+            if (username === 'admin' && password === 'password') {
+                alert('Login successful!');
+                // Redirect to another page or perform additional actions
+            } else {
+                alert('Invalid username or password. Please try again.');
+            }
+        }
+    </script>
+</body>
+</html>

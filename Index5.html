@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto earn</title>
+    <style>
+       body {
+      background-image: url("images/btc.png"); no repeat, no repeat
+    }
+        .header h1 {
+          color: #ffffff ;
+          text-align: center;
+          font-family: Georgia, serif;
+        }
+       .formcontainer {
+         color: #ffffffff ;
+         text-align: center ;
+         font-family: 'Times New Roman', serif;
+         font-style: bold;
+         border: none;
+         padding: 10px;
+         background-color: rgba(25, 25, 255, 0.5);
+         width: 94%;
+         backdrop-filter: blur(3px );
+         border-bottom-left-radius: 23px;
+         border-top-right-radius: 23px;
+       }
+      .formcontainer input {
+          border-radius: 30px;
+          font-size: 17px;
+     }
+    .formcontainer button {
+      border-radius: 8px ;
+      font-size: 19px;
+      color: rgb(128,143,249);
+      font-family: 'Times New Roman', serif;
+    }
+   .formcontainer a {
+     color: rgb(238,0,238);
+   }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class ="header">
+      <h1>Crypto earn</h1>
+    </div>
+    <div class ="formcontainer">
+    <form id="registrationForm">
+        <label for="firstName">First Name:</label><br>
+        <input type="text" id="firstName" name="firstName"><br>
+        <span id="firstNameError" class="error"></span><br>
+
+        <label for="lastName">Last Name:</label><br>
+        <input type="text" id="lastName" name="lastName"><br>
+        <span id="lastNameError" class="error"></span><br>
+
+        <label for="email">Email:</label><br>
+        <input placeholder="example@gmail.com" type="email" id="email" name="email"><br>
+        <span id="emailError" class="error"></span><br>
+
+        <label for="country">Country:</label><br>
+        <input type="text" id="country" name="country"><br>
+        <span id="countryError" class="error"></span><br>
+
+        <label for="phone">Phone:</label><br>
+        <input placeholder="+1" type="tel" id="phone" name="phone"><br>
+        <span id="phoneError" class="error"></span><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br>
+        <span id="passwordError" class="error"></span><br>
+
+        <label for="confirmPassword">Confirm Password:</label><br>
+        <input type="password" id="confirmPassword" name="confirmPassword"><br>
+        <span id="confirmPasswordError" class="error"></span><br>
+
+        <button type="button" onclick="validateForm()">Register</button>
+        <p>have an account already?</p>
+        <a href="index0.html">login</a>
+    </form>
+</div>
+
+    <script>
+        function validateForm() {
+            // Reset error messages
+            document.querySelectorAll('.error').forEach(error => error.textContent = '');
+
+            // Get form values
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const country = document.getElementById('country').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            let isValid = true;
+
+            // Validate first name
+            if (!firstName) {
+                document.getElementById('firstNameError').textContent = 'First name is required';
+                isValid = false;
+            }
+
+            // Validate last name
+            if (!lastName) {
+                document.getElementById('lastNameError').textContent = 'Last name is required';
+                isValid = false;
+            }
+
+            // Validate email
+            if (!email) {
+                document.getElementById('emailError').textContent = 'Email is required';
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                document.getElementById('emailError').textContent = 'Invalid email format';
+                isValid = false;
+            }
+
+            // Validate country
+            if (!country) {
+                document.getElementById('countryError').textContent = 'Country is required';
+                isValid = false;
+            }
+
+            // Validate phone number
+            if (!phone) {
+                document.getElementById('phoneError').textContent = 'Phone number is required';
+                isValid = false;
+            } else if (!isValidPhone(phone)) {
+                document.getElementById('phoneError').textContent = 'Invalid phone number format';
+                isValid = false;
+            }
+
+            // Validate password
+            if (!password) {
+                document.getElementById('passwordError').textContent = 'Password is required';
+                isValid = false;
+            } else if (password.length < 6) {
+                document.getElementById('passwordError').textContent = 'Password must be at least 6 characters';
+                isValid = false;
+            }
+
+            // Validate confirm password
+            if (!confirmPassword) {
+                document.getElementById('confirmPasswordError').textContent = 'Please confirm your password';
+                isValid = false;
+            } else if (confirmPassword !== password) {
+                document.getElementById('confirmPasswordError').textContent = 'Passwords do not match';
+                isValid = false;
+            }
+
+            // If form is valid, submit data (you can replace this with your backend API call)
+            if (isValid) {
+                // Submit the form data (replace this with your backend API call)
+                alert('Form submitted successfully');
+                document.getElementById('registrationForm').reset(); // Reset the form
+            }
+        }
+
+        // Function to validate email format
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Function to validate phone number format
+        function isValidPhone(phone) {
+            const phoneRegex = /^\d{10}$/; // Assuming a simple 10-digit phone number format
+            return phoneRegex.test(phone);
+        }
+    </script>
+</body>
+</html>
